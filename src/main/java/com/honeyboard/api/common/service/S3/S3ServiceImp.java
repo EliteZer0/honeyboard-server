@@ -32,9 +32,6 @@ public class S3ServiceImp implements S3Service {
     public String uploadFile(MultipartFile file) {
         try {
             String fileName = createFileName(safeOriginalName(file.getOriginalFilename()));
-            ObjectMetadata metadata = new ObjectMetadata();
-            metadata.setContentType(file.getContentType());
-            metadata.setContentLength(file.getSize());
 
             Path dir = Paths.get(baseDir).toAbsolutePath().normalize();
             Files.createDirectories(dir);
